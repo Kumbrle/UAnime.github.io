@@ -72,7 +72,7 @@ function changeEpisode(num) {
 	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + search.toString() + '?provider=gogoanime')
 	.then((response) => response.json())
 	.then((animelist) => {
-		fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[num].id)
+		fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[Number(num)].id)
 			.then((response) => response.json())
 			.then((animep) => {
 				var video = document.getElementById('player');
