@@ -126,7 +126,7 @@ function loadEpisode(anime) {
 
 
 function loadEpList(query) {
-	fetch('https://consumet-anime.up.railway.app/anime/zoro/info?id=' + query)
+	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + query.toString() + '?provider=gogoanime')
 	.then((response) => response.json())
 	.then((animelist) => {
 
