@@ -100,7 +100,7 @@ function loadEpisode(anime) {
 	.then((response) => response.json())
 	.then((animelist) => {
 		if (loadCookie(anime) === " ") {
-			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[-1].id)
+			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[0].id)
 			.then((response) => response.json())
 			.then((animep) => {
 				var video = document.getElementById('player');
