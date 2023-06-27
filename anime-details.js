@@ -6,7 +6,7 @@ function detail(query) {
 	.then((animelist) => {
 		document.getElementById("img").innerHTML = "<div class='anime__details__pic set-bg' id='img1'></div>";
 		document.getElementById("img1").style.background = "url('" + animelist.image + "')";
-		document.getElementById("title").innerHTML = "<h3>" + animelist.title[1] + "</h3>";
+		document.getElementById("title").innerHTML = "<h3>" + animelist.title.English+ "</h3>";
 		document.getElementById("description").innerHTML = animelist.description;
 		document.getElementById("type").innerHTML = "<span>Type:</span> " + animelist.type + "";
 		document.getElementById("TAN").innerHTML = "<span>Total Episodes:</span> " + animelist.totalEpisodes + "";
