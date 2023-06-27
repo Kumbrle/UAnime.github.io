@@ -96,26 +96,26 @@ function changeEpisode(num) {
 
 
 function loadEpisode(anime) {
-	fetch('https://consumet-anime.up.railway.app/anime/zoro/info?id=' + anime)
+	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + anime + '?provider=gogoanime')
 	.then((response) => response.json())
 	.then((animelist) => {
 		if (loadCookie(anime) === " ") {
-			fetch('https://consumet-anime.up.railway.app/anime/zoro/watch?episodeId=' + animelist.episodes[0].id + '?server=vidcloud')
+			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[-1].id)
 			.then((response) => response.json())
 			.then((animep) => {
 				var video = document.getElementById('player');
 				if (Hls.isSupported()) {
 					var hls = new Hls();
-					hls.loadSource('https://cors.techzbots.live/' + animep.sources[2].url);
+					hls.loadSource('https://cors.techzbots.live/' + animep.sources[0].url);
 					hls.attachMedia(video);
 				}else if(canPlayType("application/vnd.apple.mpeg")){
-					video.src = 'https://cors.techzbots.live/' + animep.sources[2].url;
+					video.src = 'https://cors.techzbots.live/' + animep.sources[0].url;
 					video.addEventListener("loadedmetadata", () => {
 						video.play();
 					})
 				}
 				episode = 0;
-				quality = 2;
+				quality = 0;
 			})
 		} 
 		
