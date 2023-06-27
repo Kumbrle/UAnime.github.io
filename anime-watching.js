@@ -69,10 +69,10 @@ function changeEpisode(num) {
 	const param = window.location.search;
 	const parser = new URLSearchParams(param);
 	const search  = parser.get('watch');
-	fetch('https://consumet-anime.up.railway.app/anime/zoro/info?id=' + search)
+	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + search.toString() + '?provider=gogoanime')
 	.then((response) => response.json())
 	.then((animelist) => {
-		fetch('https://consumet-anime.up.railway.app/anime/zoro/watch?episodeId=' + animelist.episodes[num].id + '?server=vidcloud')
+		fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[num].id)
 			.then((response) => response.json())
 			.then((animep) => {
 				var video = document.getElementById('player');
@@ -101,7 +101,7 @@ function loadEpisode(anime) {
 	.then((animelist) => {
 		console.log(animelist) 
 		if (loadCookie(anime) === " ") {
-			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[0].id)
+			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[-1].id)
 			.then((response) => response.json())
 			.then((animep) => {
 				var video = document.getElementById('player');
