@@ -96,9 +96,10 @@ function changeEpisode(num) {
 
 
 function loadEpisode(anime) {
-	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + anime + '?provider=gogoanime')
+	fetch('https://consumet-anime.up.railway.app/meta/anilist/info/' + anime.toString() + '?provider=gogoanime')
 	.then((response) => response.json())
 	.then((animelist) => {
+		console.log(animelist) 
 		if (loadCookie(anime) === " ") {
 			fetch('https://consumet-anime.up.railway.app/anime/gogoanime/watch/' + animelist.episodes[0].id)
 			.then((response) => response.json())
